@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+[data-page='person']  {
+  background: radial-gradient(circle, #e0b03e, #61380f);
+  height: 100vh;
+}
+
+[data-page='product']  {
+  background: radial-gradient(circle, #1260a0,  #112230);
+}
+
+[data-page='home']  {
+  background: radial-gradient(circle, #e0b03e, #61380f);
+}
+
+[data-page='sale']  {
+  background: radial-gradient(circle, #e0b03e, #61380f);
+}
+
+[data-page='money']  {
+  background: radial-gradient(circle, #e0b03e, #61380f);
+}
+
+
+
+nav {
+  background-color: #000;
+  /* padding-bottom: 0.1px; */
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+}
+
+li {
+  flex-grow: 1;
+}
+
+#home {
+  width: 23%;
+  letter-spacing: 8px;
+}
+
+a {
+  display: block;
+  font-family: arial;
+  padding: 15px 25px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 4px solid black;
+
+}
+
+a:hover {
+  color: yellow;
+
+}
+
+section {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.active {
+border-bottom-color: rgb(51, 7, 7);
+}
+
+.home_selected {
+  border-bottom-color:orange;
+}
+
+.news_selected {
+  border-bottom-color:green;
+}
+
+.contact_selected {
+  border-bottom-color:blueviolet;
+}
+
+.err {
+  text-align: center;
+  
+}
