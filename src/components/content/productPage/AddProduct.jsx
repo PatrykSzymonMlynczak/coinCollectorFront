@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-import PriceMap from "./PriceMap";
+import React, { useState, useContext } from "react";
+import PriceMapButtons from "./PriceMapButtons";
+import { AddProductContext } from "./AddProdcutContext";
 
 const AddProduct = ({ add }) => {
   const [name, setName] = useState();
   const [myPrice, setMyPrice] = useState();
   const [amount, setAmount] = useState();
-  const [priceMap, setPriceMap] = useState("");
+  const { priceMap } = useContext(AddProductContext);
 
   const handleAddProduct = () => {
     const product = {
@@ -13,8 +14,18 @@ const AddProduct = ({ add }) => {
       myPrice,
       amount,
     };
-    return add(product, priceMap);
+    let notNullPriceMap = priceMap;
+    console.log(notNullPriceMap)
+    if (notNullPriceMap === ''){
+      notNullPriceMap = {
+        "1": 50,
+        "5": 40
+      };
+    }
+    console.log(notNullPriceMap)
+    return add(product, notNullPriceMap);
   };
+
   const handleOnChangeName = ({ target }) => {
     return setName(target.value);
   };
@@ -22,17 +33,10 @@ const AddProduct = ({ add }) => {
   const handleOnChangeMyPrice = ({ target }) => {
     return setMyPrice(target.value);
   };
+  
   const handleOnChangeAmount = ({ target }) => {
     return setAmount(target.value);
   };
-
-  useEffect(() => {
-    setPriceMap({
-      1: 100,
-      5: 80,
-      10: 65,
-    });
-  }, []);
 
   return (
     <div
@@ -69,8 +73,9 @@ const AddProduct = ({ add }) => {
         value={amount}
       />
 
+      <PriceMapButtons />
       <button onClick={handleAddProduct}>Add</button>
-      <PriceMap />
+
     </div>
   );
 };

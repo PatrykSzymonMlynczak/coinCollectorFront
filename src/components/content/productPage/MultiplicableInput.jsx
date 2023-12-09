@@ -25,24 +25,26 @@ const MultiplicableInput = ({onInputChange}) => {
         marginBottom: "10px",
         backgroundColor: "#e2b54b",
         borderRadius: "15px",
-        padding: "5px 50px",
+        padding: "5px 30px",
         color: "#6b320b",
         fontWeight: "bold",
         textAlign: "center",
       }}>
+        Ilość
         <input
           type="text"
           pattern={numberPattern}
           onChange={handleOnChangeQuantity}
           value={quantity}
-          style={{maxWidth: "30px"}}
+          style={{maxWidth: "35px"}}
         ></input>
+        Cena
         <input
           type="text"
           pattern={numberPattern}
           onChange={handleOnChangePrice}
           value={price}
-          style={{maxWidth: "50px"}}
+          style={{maxWidth: "40px"}}
         ></input>
       </div>
     );

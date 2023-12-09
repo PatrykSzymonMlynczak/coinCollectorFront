@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductList from "./ProductList";
 import AddProduct from "./AddProduct";
+import ProductProvider from "./AddProdcutContext";
 
 import "./productPageStyles.css";
 
@@ -21,17 +22,14 @@ const ProductPage = () => {
     }
   };
 
-  const addProduct = async (product, priceMapString) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+  const addProduct = async (product, priceMap) => {
+    const config = { headers: { "Content-Type": "application/json" } };
 
+    console.log(priceMap);
     try {
       const response = await axios.post(
         `/product/${product.name}/${product.myPrice}/${product.amount}`,
-        priceMapString,
+        priceMap,
         config
       );
 
@@ -73,7 +71,9 @@ const ProductPage = () => {
           <ProductList products={products} deleteProduct={deleteProduct} />
         </div>
         <div style={{ backgroundColor: "blue" }} className="addProductPanel">
-          <AddProduct add={addProduct} />
+          <ProductProvider>
+            <AddProduct add={addProduct} />
+          </ProductProvider>
         </div>
         <div style={{ backgroundColor: "yellow" }} className="a2">
           A3
